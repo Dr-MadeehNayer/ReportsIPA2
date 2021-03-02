@@ -1,0 +1,45 @@
+﻿<div class="row">
+    <div class="col-md-4">
+        <h3>Courses Report</h3>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <input type="text" class="form-control" id="CourseName" placeholder="Enter Course Name">
+    </div>
+    <div class="col-md-2">
+        <button type="button" id="btnSearch" 
+                onclick="OpenReport()" 
+                class="btn btn-raised btn-primary btn-block">Get Report</button>
+    </div>
+   
+</div>
+<div class="row" id="divReport">
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+
+<script>
+    function OpenReport() {
+        var CourseName = $("#CourseName").val();
+
+        //ASPX page URL to load report
+        var src = '../WebForms/ReportDisplay.aspx?';
+        //We can add parameters here
+        srcsrc = src + "CourseName=" + CourseName
+
+        //We can append more than one parameter like below
+        //var companyId = 1
+        //srcsrc = src + "CourseId=" + CourseId
+
+        //Create a dynamic iframe here and append this to div tag
+        var iframe = '<iframe id="reportFrame" width="100%" height="800px" scrolling="no" frameborder="0" src="' + srcsrc + '" allowfullscreen></iframe>';
+        $("#divReport").html(iframe);
+
+        //window.open(srcsrc, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=1600,height=1000");
+
+    }
+
+
+</script> 
